@@ -1,73 +1,60 @@
-## Website Performance Optimization portfolio project
+*Improving The Website's Performance
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+**Table Of Contents
 
-To get started, check out the repository, inspect the code,
+1. Initial Assessment
+2. Optimizations Performed On Index Page
+3. Optimizations Performed On Mobile Web Development Page
+4. Optimizations Performed On Pizza Page
+5. Resources Utilized
+6. Synopsis
 
-### Getting started
+** Initial Assessment
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+***Home Page
+When looking at the Home Page, I saw that the Page Speed Score was 29
 
-Some useful tips to help you get started:
+***2048 Page
+This page had a Page Speed of 92
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+***Website Performance Optimization Page
+This page had a Page Speed Score of 93
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+***Mobile Web Dev Course 
+This page had a Page Speed Score of 87, which will need to be addressed
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+***Cam's Pizzeria 
+This page had a Page Speed Score of 29, and the frame rate on scrolling was no where near 60 fps. Also, the Pizza resizer was above the requirement of 5ms.
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
+2. Optimizations Performed On Index Page
+ -Resized pizzeria image to be thumbnail size (100px x 75px)
+ -Minified CSS files
+ -Added async attribute to analytics and secondary .js files
+ - Increased Page Speed Score to 93 (can be seen at page-rank/home-page-rank.jpg)
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+3. Optimizations Peformed On Mobile Web Development Page
+ -Resized main image to be 602px x 306px. Increased Page Speed Score from 87 to 93 (can be seen at page-rank/mobile-page-rank.jpg).
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+4. Optimizations Performed On Pizza Page
+ -Minified and compressed CSS Files
+ -Minified and compressed JS Files
+ -Minified and compressed HTML
+ -Refactored changePizzaSizes() function to reduce the time it takes to change the pizza sizes. This was accomplished by pulling out the variables being rewritten within the for loop, to be
+  just outside of the for loop scope. This was done because they only needed to be instantiated once, which greatly reduced resources. The variables within the for loop itself were declared
+  outside, as this saved ~4ms. While not a great optimization, it does help to speed up the application. This micro optimization technique is discussed in JavaScript Patterns, by Stoyan Stefanov pages 15-16. This function now executes at ~1ms (as seen in page-rank/pizza-resize-time.jpg).
+ -Refactored updatePositions() function to increase the FPS to 60. This was accomplished by caching the document.body.scrollTop method, instead of recalculating it on every scroll event.
+  This technique was observed from the supplemented material, https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html, where I reverse engineered the code to understand
+  how to minimized the scroll call. An image has been included to show the frame rate was under 60 fps for me (can be seen at page-rank/pizza-timeline.jpg)
+ -Resized the main image at the top to be at the size the page displays the content
+ -Increased the Page Speed Score to be 92, as seen in page-rank/page-speed-pizza.jpg.
 
-####Part 2: Optimize Frames per Second in pizza.html
+**Resources Utilized
+Aside from the resources mentioned within the Pizzeria section, there were a couple additional resources utilized for the page optimizations:
+	1) JavaScript was compressed utilizing jscompress.com
+	2) CSS was compressed utilizing cssminified.css
+	3) HTML was compressed utilizing kangax.github.io/html-minifier (pizza.html page only)
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+In this project, I utilized external resources for optimizing the web pages. For my typical product sites, I have a lot of this automated as I utilized various plugins in Sublime Text 2. For instance, I typically develop with Sass which allows me to compile various CSS files together into a singular file, and minifies it on save. This saves me time, as I don't have to manually initiate other tools for accomplishing this.
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
-
-### Sample Portfolios
-
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+**Synopsis
+I enjoyed this project quite a bit, as I love optimizing a web page to improve a user's experience. It was both a joy and a challenge to dive deeper within the Chrome dev tools to optimize the page; one that I look forward to utilizing more in my other web projects.
