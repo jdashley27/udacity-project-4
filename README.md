@@ -1,6 +1,6 @@
-*Improving The Website's Performance
+#Improving The Website's Performance
 
-**Table Of Contents
+##Table Of Contents
 
 1. Initial Assessment
 2. Optimizations Performed On Index Page
@@ -9,21 +9,21 @@
 5. Resources Utilized
 6. Synopsis
 
-** Initial Assessment
+##Initial Assessment
 
-***Home Page
+###Home Page
 When looking at the Home Page, I saw that the Page Speed Score was 29
 
-***2048 Page
+###2048 Page
 This page had a Page Speed of 92
 
-***Website Performance Optimization Page
+###Website Performance Optimization Page
 This page had a Page Speed Score of 93
 
-***Mobile Web Dev Course 
+###Mobile Web Dev Course 
 This page had a Page Speed Score of 87, which will need to be addressed
 
-***Cam's Pizzeria 
+###Cam's Pizzeria 
 This page had a Page Speed Score of 29, and the frame rate on scrolling was no where near 60 fps. Also, the Pizza resizer was above the requirement of 5ms.
 
 2. Optimizations Performed On Index Page
@@ -48,7 +48,7 @@ This page had a Page Speed Score of 29, and the frame rate on scrolling was no w
  -Resized the main image at the top to be at the size the page displays the content
  -Increased the Page Speed Score to be 92, as seen in page-rank/page-speed-pizza.jpg.
 
-**Resources Utilized
+##Resources Utilized
 Aside from the resources mentioned within the Pizzeria section, there were a couple additional resources utilized for the page optimizations:
 	1) JavaScript was compressed utilizing jscompress.com
 	2) CSS was compressed utilizing cssminified.css
@@ -56,5 +56,5 @@ Aside from the resources mentioned within the Pizzeria section, there were a cou
 
 In this project, I utilized external resources for optimizing the web pages. For my typical product sites, I have a lot of this automated as I utilized various plugins in Sublime Text 2. For instance, I typically develop with Sass which allows me to compile various CSS files together into a singular file, and minifies it on save. This saves me time, as I don't have to manually initiate other tools for accomplishing this.
 
-**Synopsis
+##Synopsis
 I enjoyed this project quite a bit, as I love optimizing a web page to improve a user's experience. It was both a joy and a challenge to dive deeper within the Chrome dev tools to optimize the page; one that I look forward to utilizing more in my other web projects.
